@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Word Search</string>
+    <string name="example_letter">X</string>
 </resources>
