@@ -8,17 +8,26 @@ package com.example.wordsearch.model
  * 4. put words from word list in random locations
  * 5. fill in blank areas with random letters
  *
+ *
+ *
+
+[ [              ]
+  [              ]
+  [              ]
+  [              ] ]
+
+
+
   */
 
 
 
 class Board {
-    //val sizeY
     /** Holds the letters for the board */
-    var board: Array<Array<Cell>?>? = null
+    private var data: Array<Array<Cell?>?>? = null
 
     // Board size must not have negative dimensions
-    var sizeX: Int = 0
+    var width: Int = 0
         set(value) {
             if (value >= 0) {
                 field = value
@@ -27,7 +36,7 @@ class Board {
                 throw IndexOutOfBoundsException()
             }
         }
-    var sizeY: Int = 0
+    var height: Int = 0
         set(value) {
             if (value >= 0) {
                 field = value
@@ -37,20 +46,28 @@ class Board {
             }
         }
 
-
-
-    class Cell(var letter: Char? = null) {
+    private class Cell(var letter: Char? = null) {
     }
 
-    fun initializeBoard() {
-        board = Array(sizeX) { Array(sizeY) {Cell()} }
+    fun initialize() {
+        data = Array(height) { Array(width) {null} }
         // TODO: Verify board was created successfully
     }
 
-    fun setCellValue(x: Int,y: Int, value: Char?) {
-        this.board!!.get(x)?.set(y, Cell(value))
-
+    fun setValue(height: Int, width: Int, value: Char?) {
+        data!!.get(height)?.set(width, Cell(value))
         // TODO: Verify cell value has been changed
+    }
+
+    fun generateRandomBoard() {
+        data = Array(height) { Array(width) {null} }
+
+        for (h in 0..(height-1)) {
+            for (w in 0..(width-1)) {
+                //data.get(h).set(w,Cell(""))
+
+            }
+        }
     }
 }
 
