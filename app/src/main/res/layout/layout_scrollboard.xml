@@ -16,19 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="1000dp"
-                    android:layout_height="1000dp"
-                    android:src="@drawable/ic_sailboat"
-                    android:contentDescription="Sailboat"
-                    />
-            </LinearLayout>
+            <include layout="@layout/layout_board" />
         </HorizontalScrollView>
     </ScrollView>
 

@@ -7,4 +7,5 @@
   * Might need to create a custom view
   * Unable to find any existing code for this
 * Update README file
+* Move game mechanics to separate thread
 * 

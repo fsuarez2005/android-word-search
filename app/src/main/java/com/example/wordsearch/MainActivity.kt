@@ -1,6 +1,7 @@
 package com.example.wordsearch
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.widget.GridLayout
 import androidx.appcompat.app.AppCompatActivity
@@ -18,15 +19,32 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.my_toolbar))
 
 
+        Thread(
+            Runnable {
+                boardUI.initialize()
+                boardUI.generateRandomLetterGrid()
+            }).start()
 
-        boardUI.initialize()
-        boardUI.generateRandomLetterGrid()
+
+
+
+        findViewById<GridLayout>(R.id.board_grid).setOnTouchListener { v, event ->
+
+
+            Log.v("WORDSEARCH", "Touched")
+            true
+            }
+
+
     }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.toolbar_menu,menu)
         return super.onCreateOptionsMenu(menu)
     }
+
 
 }
 

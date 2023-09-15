@@ -15,22 +15,34 @@ class BoardUI(private val context: Context) {
 
     fun initialize() {
         board = Board()
-        board.generateRandomBoard()
 
         boardView = contextActivity.findViewById<GridLayout>(R.id.board_grid)
     }
 
+    fun drawBoard() {
+
+
+
+    }
+
+
     fun generateRandomLetterGrid() {
         // create TextView with letter
 
-        for (n in 1..1000) {
+        for (n in 1..10000) {
             val randomLetter: String = ('a'..'z').random().toString()
 
-            // create TextView
             var letterTextView = TextView(boardView.context)
+            letterTextView.setBackgroundColor(context.resources.getColor(R.color.orange))
+            letterTextView.height = 70
+            letterTextView.width = 70
+            letterTextView.textAlignment = TextView.TEXT_ALIGNMENT_CENTER
             letterTextView.text = randomLetter
 
-            boardView.addView(letterTextView)
+
+            boardView.post {
+                boardView.addView(letterTextView)
+            }
         }
     }
 }

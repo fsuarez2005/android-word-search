@@ -17,27 +17,26 @@ class BoardTest {
     }
 
     @Test
-    fun testInitializeBoard() {
-        this.board.initialize()
+    fun initializeBoard() {
         this.board.width = 10
         this.board.height = 10
+        this.board.initialize()
 
-
-        // check if row is Array<Cell>
+        // check if board is an Array
         assert(this.board.data is Array)
 
-        // check if column in that roll
-        assert(this.board.data?.get(0) is Array)
+        // check if first row is an Array
+        assert(this.board.data!!.get(0) is Array)
 
-        // check if cell is type cell
-        assert(this.board.data?.get(0)?.get(0) is Board.Cell)
+        // check if 0, 0 is a Char
+        assert(this.board.data!!.get(0).get(0) is Char)
 
-
-
+        // check if char at 0, 0 is ' '
+        assert(this.board.data!!.get(0).get(0) == ' ')
     }
 
     @Test
-    fun setSizeXTest() {
+    fun setWidth() {
         val testValue: Int = 10
 
         this.board.width = testValue
@@ -45,7 +44,7 @@ class BoardTest {
     }
 
     @Test
-    fun negativeSizeX() {
+    fun setNegativeWidth() {
         // test for negative size
         try {
             this.board.width = -1
@@ -58,10 +57,27 @@ class BoardTest {
     }
 
     @Test
-    fun setSizeYTest() {
+    fun setHeight() {
         val testValue: Int = 0
         this.board.height = testValue
         assert(this.board.height == testValue)
+    }
+
+    @Test
+    fun setNegativeHeight() {
+        // test for negative size
+        try {
+            this.board.height = -1
+
+            // should not get here
+            assert(false)
+        } catch(e: Exception) {
+            assert(true)
+        }
+    }
+
+    @Test
+    fun generateRandomBoard() {
     }
 
 }
